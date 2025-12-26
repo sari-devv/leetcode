@@ -1,0 +1,10 @@
+ColumnLimit: 80
+SortIncludes: false
+IndentWidth: 4
+AlwaysBreakTemplateDeclarations: Yes
+AllowShortFunctionsOnASingleLine: None
+IndentAccessModifiers: false
+AccessModifierOffset: -4
+IndentCaseLabels: true
+PackConstructorInitializers: CurrentLine
+PointerAlignment: Left
