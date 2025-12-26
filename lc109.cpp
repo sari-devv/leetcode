@@ -43,6 +43,28 @@ class Solution {
         return pRoot;
     }
 
+    TreeNode* listToBSTRec(ListNode* start, ListNode* end) {
+        if (start == end) {
+            return nullptr;
+        }
+
+        /* Find the mid with the fast/slow approach. */
+        ListNode* fast = start;
+        ListNode* slow = start;
+
+        while (fast != end && fast->next != end) {
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+
+        TreeNode* pRoot = new TreeNode(slow->val);
+
+        pRoot->left = listToBSTRec(start, slow);
+        pRoot->right = listToBSTRec(slow->next, end);
+
+        return pRoot;
+    }
+
 public:
     TreeNode* sortedListToBST(ListNode* head) {
         vector<int> vals;
