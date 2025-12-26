@@ -29,16 +29,19 @@ public:
             }
 
             /* Else this node is unique, insert it to our new list. */
-            ListNode* newNode = new ListNode(it->val);
             if (newHead == nullptr) {
-                newHead = newNode;
-                newTail = newNode;
+                newHead = it;
+                newTail = it;
             } else {
-                newTail->next = newNode;
+                newTail->next = it;
                 newTail = newTail->next;
             }
 
             it = it->next;
+        }
+
+        if (newTail) {
+            newTail->next = nullptr;
         }
 
         return newHead;
