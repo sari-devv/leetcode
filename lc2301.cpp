@@ -3,12 +3,12 @@
 class Solution {
     using CharMap = unordered_map<char, unordered_set<char>>;
 
-    bool canTransform(const string& sub, const string& target,
+    bool canTransform(const string& sub, const string& s, int start,
                       const CharMap& charMap) {
-        assert(sub.size() == target.size());
+        // assert(sub.size() == target.size());
 
         for (int i = 0; i < sub.size(); i++) {
-            if (sub[i] == target[i]) {
+            if (sub[i] == s[start + i]) {
                 continue;
             }
 
@@ -18,7 +18,7 @@ class Solution {
                 return false;
             }
 
-            if (it->second.find(target[i]) == it->second.end()) {
+            if (it->second.find(s[start + i]) == it->second.end()) {
                 return false;
             }
         }
@@ -39,8 +39,7 @@ public:
         int n = s.size();
 
         for (int i = 0; i <= n - subSize; i++) {
-            string target = s.substr(i, subSize);
-            if (canTransform(sub, target, charMap)) {
+            if (canTransform(sub, s, i, charMap)) {
                 return true;
             }
         }
